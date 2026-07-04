@@ -1,0 +1,117 @@
+<html>
+
+<body>
+
+
+<h1>Expense Calculator</h1>
+
+
+Food:
+
+<input id="food">
+
+
+<br><br>
+
+
+Travel:
+
+<input id="travel">
+
+
+<br><br>
+
+
+Shopping:
+
+<input id="shopping">
+
+
+<br><br>
+
+
+
+<button onclick="calculate()">
+
+Calculate Expense
+
+</button>
+
+
+
+<h2 id="result"></h2>
+
+
+
+
+<script>
+
+
+async function calculate(){
+
+
+let expense = {
+
+
+food:Number(document.getElementById("food").value),
+
+
+travel:Number(document.getElementById("travel").value),
+
+
+shopping:Number(document.getElementById("shopping").value)
+
+
+};
+
+
+
+
+
+let response = await fetch(
+
+"http://127.0.0.1:8000/calculate",
+
+{
+
+method:"POST",
+
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+
+body:JSON.stringify(expense)
+
+
+}
+
+);
+
+
+
+
+
+let data = await response.json();
+
+
+
+
+document.getElementById("result").innerHTML =
+
+"Your total expense is ₹" + data.total;
+
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
