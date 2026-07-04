@@ -406,7 +406,7 @@ Restaurant receives
 
 ---
 
-# What you actually learned:
+# What we actually learned:
 
 Not:
 
